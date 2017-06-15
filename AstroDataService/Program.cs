@@ -1,11 +1,4 @@
-﻿using System;
-using AstroDataService.DataAccess;
-using AstroDataService.DataAccess.Planets;
-using AstroDataService.Hosting;
-using AstroDataService.Models;
-using AstroDataService.Query;
-using StructureMap;
-using StructureMap.Pipeline;
+﻿using AstroDataService.Hosting;
 using Topshelf;
 
 namespace AstroDataService
