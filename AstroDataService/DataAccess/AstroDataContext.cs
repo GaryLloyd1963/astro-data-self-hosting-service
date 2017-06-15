@@ -15,7 +15,8 @@ namespace AstroDataService.DataAccess
         {
             _planetModelBuilder = planetModelBuilder;
 
-           Database.SetInitializer(new CreateDatabaseIfNotExists<AstroDataContext>());
+            //Database.SetInitializer(new CreateDatabaseIfNotExists<AstroDataContext>());
+            Database.CreateIfNotExists();
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

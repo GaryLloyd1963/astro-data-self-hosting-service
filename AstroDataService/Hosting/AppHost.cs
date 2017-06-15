@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using AstroDataService.DataAccess;
 using AstroDataService.Ioc;
 using Funq;
 using ServiceStack;
@@ -16,6 +17,15 @@ namespace AstroDataService.Hosting
         {
             var iocContainer = ContainerBuilder.CreateContainer();
             container.Adapter = new StructureMapContainerAdaptor(iocContainer);
+
+            ConfigureDatabase(iocContainer);
+        }
+
+        private void ConfigureDatabase(StructureMap.Container container)
+        {
+            var dbContext = container.GetInstance<IAstroDataContext>();
+            var seedDataGenerator = container.GetInstance<IAstroSeedDataGenerator>();
+            seedDataGenerator.GenerateSeedData();
         }
     }
 }
