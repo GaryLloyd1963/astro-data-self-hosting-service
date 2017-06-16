@@ -2,6 +2,7 @@
 using AstroDataService.DataAccess;
 using AstroDataService.Ioc;
 using ServiceStack;
+using ServiceStack.Text;
 using StructureMap;
 using Container = Funq.Container;
 
@@ -20,6 +21,10 @@ namespace AstroDataService.Hosting
             container.Adapter = new StructureMapContainerAdaptor(iocContainer);
 
             ConfigureDatabase(iocContainer);
+
+            Plugins.Add(new CorsFeature());
+
+            JsConfig.EmitCamelCaseNames = true;
         }
 
         private void ConfigureDatabase(IContainer container)
